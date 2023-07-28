@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using teste_tecnico_fadami.Data;
+
 namespace teste_tecnico_fadami
 {
     public class Program
@@ -8,6 +11,11 @@ namespace teste_tecnico_fadami
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<Contexto>
+                (options => options.UseSqlServer("Data Source=DESKTOP-3FFRPI0\\SQLSERVER2023;Initial Catalog=fadami;Integrated Security=True"));
+
+
 
             var app = builder.Build();
 
