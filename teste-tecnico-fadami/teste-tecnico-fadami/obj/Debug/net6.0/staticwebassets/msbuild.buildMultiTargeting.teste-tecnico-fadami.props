@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\teste-tecnico-fadami.props" />
+</Project>

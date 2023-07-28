@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teste-tecnico-fadami", "teste-tecnico-fadami\teste-tecnico-fadami.csproj", "{3793DEDB-EEC6-4F62-8A61-841F808894AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3793DEDB-EEC6-4F62-8A61-841F808894AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3793DEDB-EEC6-4F62-8A61-841F808894AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3793DEDB-EEC6-4F62-8A61-841F808894AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3793DEDB-EEC6-4F62-8A61-841F808894AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF64DE5A-484F-400F-A818-38A55E87391B}
+	EndGlobalSection
+EndGlobal
