@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using teste_tecnico_fadami.Data;
+using teste_tecnico_fadami.Repository;
 
 namespace teste_tecnico_fadami
 {
@@ -13,9 +14,9 @@ namespace teste_tecnico_fadami
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<Contexto>
-                (options => options.UseSqlServer("Data Source=DESKTOP-3FFRPI0\\SQLSERVER2023;Initial Catalog=fadami;Integrated Security=True"));
+                (options => options.UseSqlServer("Data Source=DESKTOP-3FFRPI0\\SQLEXPRESS;Initial Catalog=fadami;User ID=fadami;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False"));
 
-
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             var app = builder.Build();
 

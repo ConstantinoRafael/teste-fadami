@@ -1,23 +1,24 @@
-﻿@{
+﻿@model UsuarioModel
+@{
     ViewData["Title"] = "Página inicial";
 }
 
-<form>
+<form asp-controller="Usuario" asp-action="Cadastrar" method="post">
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Seu Nome">
+        <input type="text" asp-for="NOME" class="form-control" id="nome" placeholder="Seu Nome">
     </div>
     <div class="form-group">
         <label for="login">Login</label>
-        <input type="text" class="form-control" id="login" placeholder="Seu login">
+        <input type="text" asp-for="LOGIN" class="form-control" id="login" placeholder="Seu login">
     </div>
     <div class="form-group">
         <label for="cpf">CPF</label>
-        <input type="number" class="form-control" id="cpf" placeholder="Seu CPF">
+        <input type="number" asp-for="CPF" class="form-control" id="cpf" placeholder="Seu CPF">
     </div>
     <div class="form-group">
         <label for="senha">Senha</label>
-        <input type="password" class="form-control" id="senha" placeholder="Sua senha">
+        <input type="password" asp-for="SENHA" class="form-control" id="senha" placeholder="Sua senha">
     </div>
     <div class="form-group">
         <label for="confirmaSenha">Confirmar senha</label>
