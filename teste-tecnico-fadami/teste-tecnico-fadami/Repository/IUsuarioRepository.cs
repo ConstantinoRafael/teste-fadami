@@ -5,6 +5,8 @@ namespace teste_tecnico_fadami.Repository
     public interface IUsuarioRepository
     {
         List<UsuarioModel> BuscarTodos();
-        UsuarioModel Adicionar(UsuarioModel usuario);   
+        UsuarioModel BuscarPorId(int id);
+        UsuarioModel Adicionar(UsuarioModel usuario);
+        UsuarioModel Atualizar(UsuarioModel usuario);
     }
 }

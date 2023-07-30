@@ -18,9 +18,9 @@ namespace teste_tecnico_fadami.Models
         [MinLength(7)]
         [MaxLength(20)]
         public string SENHA { get; set; }
-        public DateTime ULTIMO_ACESSO { get; set; }
-        public int QTD_ERRO_LOGIN { get; set; }
-        public bool BL_ATIVO { get; set; }
+        public DateTime? ULTIMO_ACESSO { get; set; }
+        public int? QTD_ERRO_LOGIN { get; set; }
+        public bool? BL_ATIVO { get; set; }
 
     }
 }
