@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace teste_tecnico_fadami.Models
 {
@@ -18,10 +19,9 @@ namespace teste_tecnico_fadami.Models
         [MinLength(7)]
         [MaxLength(20)]
         public string SENHA { get; set; }
-        [Required(ErrorMessage = "Confirme sua senha")]
-        [MinLength(7)]
-        [MaxLength(20)]
-        [Compare("SENHA", ErrorMessage ="Deve ser igual à senha")]
+        [NotMapped]
+        [Required(ErrorMessage = "Confirmação de senha é obrigatória")]
+        [Compare("SENHA", ErrorMessage = "As senhas não coincidem")]
         public string CONFIRMA_SENHA { get; set; }
         public DateTime? ULTIMO_ACESSO { get; set; }
         public int QTD_ERRO_LOGIN { get; set; }

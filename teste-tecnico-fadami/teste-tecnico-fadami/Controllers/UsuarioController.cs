@@ -45,13 +45,14 @@ namespace teste_tecnico_fadami.Controllers
         [HttpPost]
         public IActionResult Cadastrar(UsuarioModel usuario)
         {
+
             try
             {
                 if (ModelState.IsValid)
                 {
                     _usuarioRepository.Adicionar(usuario);
                     TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso";
-                    return RedirectToAction("Consultar");
+                    return RedirectToAction("Cadastrar");
                 }
 
                 return View(usuario);
@@ -60,7 +61,7 @@ namespace teste_tecnico_fadami.Controllers
             {
 
                 TempData["MensagemErro"] = $"Ops, não foi possível cadastrar! Detalhe do erro: {erro.Message}";
-                return RedirectToAction("Consultar");
+                return RedirectToAction("Cadastrar");
             }
             
         }
@@ -78,6 +79,7 @@ namespace teste_tecnico_fadami.Controllers
                     {
                         if(usuario.SenhaValida(loginModel.SENHA))
                         {
+                            _usuarioRepository.AtualizarUtlimoAcesso(usuario, DateTime.Now);
                             _usuarioRepository.AtualizarQtdErr(usuario, 0);
                             _usuarioRepository.AtualizarBl(usuario, false);
                             _sessao.CriarSessaoDoUsuario(usuario);

@@ -1,0 +1,31 @@
+﻿@model UsuarioModel
+
+<h2>Os seus dados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cpf</th>
+            <th scope="col">Login</th>
+            <th scope="col">Último acesso</th>
+            <th scope="col">Erros de Login</th>
+            <th scope="col">Bloqueio ativo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>@Model.NOME</td>
+            <td>@Model.CPF</td>
+            <td>@Model.LOGIN</td>
+            <td>@Model.ULTIMO_ACESSO</td>
+            <td>@Model.QTD_ERRO_LOGIN</td>
+            <td>@Model.BL_ATIVO</td>
+        </tr>
+    </tbody>
+</table>
+
+<form asp-controller="Usuario" asp-action="Sair" method="post">
+     <button type="submit" class="btn btn-primary btn-block">Sair</button>
+</form>

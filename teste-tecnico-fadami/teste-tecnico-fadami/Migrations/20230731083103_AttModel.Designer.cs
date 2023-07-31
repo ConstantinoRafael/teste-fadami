@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using teste_tecnico_fadami.Data;
 
@@ -11,9 +12,11 @@ using teste_tecnico_fadami.Data;
 namespace teste_tecnico_fadami.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230731083103_AttModel")]
+    partial class AttModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,6 +35,10 @@ namespace teste_tecnico_fadami.Migrations
 
                     b.Property<bool>("BL_ATIVO")
                         .HasColumnType("bit");
+
+                    b.Property<string>("CONFIRMA_SENHA")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CPF")
                         .IsRequired()
