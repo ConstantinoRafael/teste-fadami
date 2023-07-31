@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using teste_tecnico_fadami.Helper;
 using teste_tecnico_fadami.Models;
 using teste_tecnico_fadami.Repository;
@@ -77,11 +78,23 @@ namespace teste_tecnico_fadami.Controllers
                     {
                         if(usuario.SenhaValida(loginModel.SENHA))
                         {
+                            _usuarioRepository.AtualizarQtdErr(usuario, 0);
+                            _usuarioRepository.AtualizarBl(usuario, false);
                             _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Consultar");
                         }
 
+                        if(usuario.QTD_ERRO_LOGIN < 3)
+                        {
+                            var erros = usuario.QTD_ERRO_LOGIN+1;
+                            _usuarioRepository.AtualizarQtdErr(usuario, erros);
 
+                            return RedirectToAction("Login");
+                        }
+
+                        var bl = true;
+
+                        _usuarioRepository.AtualizarBl(usuario, bl);
 
                         TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Tente novamente!";
                     }

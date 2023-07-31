@@ -33,16 +33,28 @@ namespace teste_tecnico_fadami.Repository
             _contexto.SaveChanges();
             return usuario;
         }
-        public UsuarioModel Atualizar(UsuarioModel usuario)
+
+        public UsuarioModel AtualizarUtlimoAcesso(UsuarioModel usuario, DateTime date)
         {
             UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
 
             if (usuarioDB == null) throw new Exception("Houve um erro na atualização do usuário");
 
-            usuarioDB.ULTIMO_ACESSO = usuario.ULTIMO_ACESSO;
-            usuarioDB.QTD_ERRO_LOGIN = usuario.QTD_ERRO_LOGIN;
-            usuarioDB.BL_ATIVO = usuario.BL_ATIVO;
+            usuarioDB.ULTIMO_ACESSO = date;
 
+            _contexto.Usuarios.Update(usuarioDB);
+            _contexto.SaveChanges();
+
+            return usuarioDB;
+        }
+        public UsuarioModel AtualizarQtdErr(UsuarioModel usuario, int qtd_err)
+        {
+            UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
+
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização do usuário");
+
+            usuarioDB.QTD_ERRO_LOGIN = qtd_err;
+            
             _contexto.Usuarios.Update(usuarioDB);
             _contexto.SaveChanges();
 
@@ -50,6 +62,21 @@ namespace teste_tecnico_fadami.Repository
 
         }
 
-      
+       
+        public UsuarioModel AtualizarBl(UsuarioModel usuario, bool bl)
+        {
+            UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
+
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização do usuário");
+
+            usuarioDB.BL_ATIVO = bl;
+
+            _contexto.Usuarios.Update(usuarioDB);
+            _contexto.SaveChanges();
+
+            return usuarioDB;
+        }
+
+        
     }
 }

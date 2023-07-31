@@ -18,11 +18,14 @@ namespace teste_tecnico_fadami.Models
         [MinLength(7)]
         [MaxLength(20)]
         public string SENHA { get; set; }
+        [Required(ErrorMessage = "Confirme sua senha")]
+        [MinLength(7)]
+        [MaxLength(20)]
         [Compare("SENHA", ErrorMessage ="Deve ser igual à senha")]
         public string CONFIRMA_SENHA { get; set; }
         public DateTime? ULTIMO_ACESSO { get; set; }
-        public int? QTD_ERRO_LOGIN { get; set; }
-        public bool? BL_ATIVO { get; set; }
+        public int QTD_ERRO_LOGIN { get; set; }
+        public bool BL_ATIVO { get; set; }
 
         public bool SenhaValida(string senha)
         {
