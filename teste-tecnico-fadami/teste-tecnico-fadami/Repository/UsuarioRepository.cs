@@ -26,7 +26,7 @@ namespace teste_tecnico_fadami.Repository
         }
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
-            usuario.ULTIMO_ACESSO = DateTime.Now;
+            usuario.ULTIMO_ACESSO = DateTime.MinValue;
             usuario.QTD_ERRO_LOGIN = 0;
             usuario.BL_ATIVO = false;
             _contexto.Usuarios.Add(usuario);

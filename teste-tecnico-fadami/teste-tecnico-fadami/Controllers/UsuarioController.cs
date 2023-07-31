@@ -88,6 +88,7 @@ namespace teste_tecnico_fadami.Controllers
 
                         if(usuario.QTD_ERRO_LOGIN < 3)
                         {
+                            TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Tente novamente!";
                             var erros = usuario.QTD_ERRO_LOGIN+1;
                             _usuarioRepository.AtualizarQtdErr(usuario, erros);
 
