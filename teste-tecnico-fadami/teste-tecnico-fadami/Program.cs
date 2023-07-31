@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using teste_tecnico_fadami.Data;
+using teste_tecnico_fadami.Helper;
 using teste_tecnico_fadami.Repository;
 
 namespace teste_tecnico_fadami
@@ -15,8 +16,15 @@ namespace teste_tecnico_fadami
 
             builder.Services.AddDbContext<Contexto>
                 (options => options.UseSqlServer("Data Source=DESKTOP-3FFRPI0\\SQLEXPRESS;Initial Catalog=fadami;User ID=fadami;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False"));
-
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            builder.Services.AddScoped<ISessao, Sessao>();
+
+            builder.Services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -34,6 +42,8 @@ namespace teste_tecnico_fadami
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();    
 
             app.MapControllerRoute(
                 name: "default",

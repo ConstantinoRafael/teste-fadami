@@ -15,6 +15,7 @@ namespace teste_tecnico_fadami.Repository
         {
             return _contexto.Usuarios.FirstOrDefault(x => x.LOGIN.ToUpper() == login.ToUpper());
         }
+
         public UsuarioModel BuscarPorId(int id)
         {
             return _contexto.Usuarios.FirstOrDefault(x => x.Id == id);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using teste_tecnico_fadami.Helper;
 using teste_tecnico_fadami.Models;
 using teste_tecnico_fadami.Repository;
 
@@ -7,13 +8,26 @@ namespace teste_tecnico_fadami.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        private readonly ISessao _sessao;
+        public UsuarioController(IUsuarioRepository usuarioRepository,
+                                 ISessao sessao)
         {
             _usuarioRepository = usuarioRepository;
+            _sessao = sessao;
         }
         public IActionResult Login()
         {
+            // Se o usuario estiver logado, redirecionar para Consultar
+
+            if (_sessao.BuscarSessaoDoUsuario() != null) return RedirectToAction("Consultar");
+
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+            return RedirectToAction("Login");
         }
 
         public IActionResult Cadastrar()
@@ -63,8 +77,12 @@ namespace teste_tecnico_fadami.Controllers
                     {
                         if(usuario.SenhaValida(loginModel.SENHA))
                         {
+                            _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Consultar");
                         }
+
+
+
                         TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Tente novamente!";
                     }
                     TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Tente novamente!";
