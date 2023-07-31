@@ -4,23 +4,27 @@
 }
 
 <form asp-controller="Usuario" asp-action="Cadastrar" method="post">
-    <div class="form-group">
+    <div class="mb-3">
         <label for="nome">Nome</label>
         <input type="text" asp-for="NOME" class="form-control" id="nome" placeholder="Seu Nome">
+        @Html.ValidationMessageFor(x => x.NOME)
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <label for="login">Login</label>
         <input type="text" asp-for="LOGIN" class="form-control" id="login" placeholder="Seu login">
+        @Html.ValidationMessageFor(x => x.LOGIN)
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <label for="cpf">CPF</label>
         <input type="number" asp-for="CPF" class="form-control" id="cpf" placeholder="Seu CPF">
+        @Html.ValidationMessageFor(x => x.CPF)
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <label for="senha">Senha</label>
         <input type="password" asp-for="SENHA" class="form-control" id="senha" placeholder="Sua senha">
+        @Html.ValidationMessageFor(x => x.SENHA)
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <label for="confirmaSenha">Confirmar senha</label>
         <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirme sua senha">
     </div>

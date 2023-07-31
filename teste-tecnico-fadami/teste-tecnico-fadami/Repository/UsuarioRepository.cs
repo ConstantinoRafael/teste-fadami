@@ -11,6 +11,10 @@ namespace teste_tecnico_fadami.Repository
         public UsuarioRepository(Contexto contexto) {
             _contexto = contexto;
         }
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return _contexto.Usuarios.FirstOrDefault(x => x.LOGIN.ToUpper() == login.ToUpper());
+        }
         public UsuarioModel BuscarPorId(int id)
         {
             return _contexto.Usuarios.FirstOrDefault(x => x.Id == id);
@@ -44,5 +48,7 @@ namespace teste_tecnico_fadami.Repository
             return usuarioDB;
 
         }
+
+      
     }
 }
